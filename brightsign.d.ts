@@ -18,12 +18,12 @@ declare module '@brightsign/assetpool' {
   export interface Asset {
     name: string;
     link: string;
-    size: number;
-    hash: Hash;
+    size?: number;
+    hash?: Hash;
     changeHint: string;
     auth?: Authentication;
     headers?: Header[];
-    probe: string;
+    probe?: string;
   }
   
   export interface ValidationOptions {
@@ -112,6 +112,7 @@ declare module '@brightsign/assetpoolfetcher' {
     fileevent: EventListener;
     progressevent: EventListener;
     constructor(pool: AssetPool);
+    addEventListener(type: any, listener: any): any;
     start(list: Asset[], assetPoolParams?: AssetPoolFetcherParams): Promise<void> 
     cancel(): Promise<void> ;
   }
@@ -608,5 +609,30 @@ declare module '@brightsign/videooutput' {
     disableAudio(disable: boolean): Promise<void>; // if type === hdmi
     getTxHdcpStatus(): Promise<TxHdcpStatus>; // if type === hdmi
     forceHdcpOn(forceHdcpOn: boolean): Promise<void>; // if type === hdmi
+  }
+}
+
+declare module '@brightsign' {
+  
+  global {
+
+    export class BSMessagePort {
+      onbsmessage: (message: {data: any}) => void;
+      PostBSMessage(message: object): void;
+    }
+
+    export class BSControlPort {
+      constructor(portName: string);
+      SetPinValue(button: number, output: number): void;
+      oncontroldown(event: any): void;
+    }
+
+    export class BSTicker {
+      constructor(x: number, y: number, w: number, h: number, r: number);
+      AddString(s: string): void;
+      SetBackgroundColor(argb: number): void;
+      SetForegroundColor(argb: number): void;
+      SetSeparatorString(setSeparatorString: string): void;
+    }
   }
 }

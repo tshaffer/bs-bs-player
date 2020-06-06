@@ -4,19 +4,43 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
-import { bsUiModelReducer } from './model';
-import { BsUiModelState } from './type';
-import { Template } from './component';
 import './asset/bootstrap.css';
 import 'normalize.css/normalize.css';
 import 'flexboxgrid/dist/flexboxgrid.min.css';
 import 'font-awesome/css/font-awesome.min.css';
+import { App, bsBrightSignPlayerReducer, BsBrightSignPlayerState } from './index';
+import { initRuntime } from './controller';
+import { combineReducers } from 'redux';
+import { bsDmReducer } from '@brightsign/bsdatamodel';
 
-const store = createStore<BsUiModelState>(bsUiModelReducer, composeWithDevTools(applyMiddleware(thunk)));
+const getStore = () => {
+  const reducers = combineReducers<BsBrightSignPlayerState>({
+    bsdm: bsDmReducer,
+    bsPlayer: bsBrightSignPlayerReducer,
+  });
+  return createStore<BsBrightSignPlayerState>(
+    reducers,
+    composeWithDevTools(applyMiddleware(thunk),
+    ));
+};
 
-ReactDOM.render(
-  <Provider store={store}>
-    <Template />
-  </Provider>,
-  document.getElementById('root') as HTMLElement
-);
+function bootstrapper() {
+
+  console.log('bootstrapper');
+
+  const store = getStore();
+
+  store.dispatch(initRuntime(store));
+
+  ReactDOM.render(
+    <Provider store={store}>
+      <App />
+    </Provider>,
+    document.getElementById('root') as HTMLElement
+  );
+
+}
+
+// setTimeout(bootstrapper, 30000);
+setTimeout(bootstrapper, 1000);
+

@@ -1,28 +1,30 @@
 /** @module Selector:base */
 
-import { BsUiModelState } from '../type';
-import { isValidBsUiModelStateShallow } from '../model';
+import { BsBrightSignPlayerModelState } from '../type';
+import { isValidBsBrightSignPlayerModelStateShallow } from '../index';
 import {
-  BsUiError,
-  BsUiErrorType,
-} from '../utility/BsUiError';
+  BsBrightSignPlayerError,
+  BsBrightSignPlayerErrorType
+} from '../utility/BsBrightSignPlayerError';
 
 /** @internal */
 /** @private */
-export const bsUiModelFilterBaseState = (state: any): BsUiModelState => {
-  if (state.hasOwnProperty('bsuimodel') && isValidBsUiModelStateShallow(state.bsuimodel)) {
-    return state.bsuimodel as BsUiModelState;
-  } else if (isValidBsUiModelStateShallow(state)) {
-    return state as BsUiModelState;
+export const bsBrightSignPlayerModelFilterBaseState = (state: any): BsBrightSignPlayerModelState => {
+  if (state.hasOwnProperty('bsbrightsignplayermodel') 
+    && isValidBsBrightSignPlayerModelStateShallow(state.bsbrightsignplayermodel)) {
+    return state.bsbrightsignplayermodel as BsBrightSignPlayerModelState;
+  } else if (isValidBsBrightSignPlayerModelStateShallow(state)) {
+    return state as BsBrightSignPlayerModelState;
   } else {
-    const exceptionMessage = `state must be of type BsUiModelState or have a field bsuimodel
-      of type BsUiModelState. invalid state ${JSON.stringify(state)}`;
-    throw new BsUiError(BsUiErrorType.invalidParameters, exceptionMessage);
+    const exceptionMessage = `state must be of type BsBrightSignPlayerModelState or have a field bsbrightsignplayermodel
+      of type BsBrightSignPlayerModelState. invalid state ${JSON.stringify(state)}`;
+    throw new BsBrightSignPlayerError(BsBrightSignPlayerErrorType.invalidParameters, exceptionMessage);
   }
 };
 
 /** @internal */
 /** @private */
-export const bsUiModelGetBaseState = (state: BsUiModelState): BsUiModelState  => {
-  return bsUiModelFilterBaseState(state);
+export const bsBrightSignPlayerModelGetBaseState = (state: BsBrightSignPlayerModelState)
+  : BsBrightSignPlayerModelState  => {
+  return bsBrightSignPlayerModelFilterBaseState(state);
 };
