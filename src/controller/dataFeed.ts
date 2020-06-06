@@ -2,7 +2,8 @@ import * as fs from 'fs-extra';
 import axios from 'axios';
 
 import { ArTextItem, ArTextFeed, ArMrssItem, ArMrssFeed, ArContentFeedItem, ArContentFeed, ArDataFeed, ArFeed } from '../type/dataFeed';
-import { DmState,
+import { DmState } from '@brightsign/bsdatamodel';
+import {
   DmcDataFeed,
   DmRemoteDataFeedSource,
   DmParameterizedString,

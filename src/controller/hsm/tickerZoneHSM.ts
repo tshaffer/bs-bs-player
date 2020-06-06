@@ -1,5 +1,6 @@
 import { ZoneHSM, } from './zoneHSM';
-import { DmState, dmGetZoneById, DmZone } from '@brightsign/bsdatamodel';
+import { DmState } from '@brightsign/bsdatamodel';
+import { dmGetZoneById, DmZone } from '@brightsign/bsdatamodel';
 import {
   BsDmId,
   DmMediaState,

@@ -1,8 +1,8 @@
 import { HSM, HState, STTopEventHandler } from './HSM';
 import { ArEventType, HSMStateData } from '../../type/runtime';
 import { Action } from 'redux';
+import { DmState } from '@brightsign/bsdatamodel';
 import {
-  DmState,
   BsDmId,
   DmDataFeedSource,
   dmGetDataFeedIdsForSign,

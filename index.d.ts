@@ -12,7 +12,7 @@ import { DmState } from '@brightsign/bsdatamodel';
 import { DmZone } from '@brightsign/bsdatamodel';
 import { DmEvent } from '@brightsign/bsdatamodel';
 import { DmDerivedContentItem } from '@brightsign/bsdatamodel';
-import { DmState, DmcDataFeed } from '@brightsign/bsdatamodel';
+import { DmcDataFeed } from '@brightsign/bsdatamodel';
 import { Store } from 'redux';
 import { Action } from 'redux';
 import { ActionCreator } from 'redux';

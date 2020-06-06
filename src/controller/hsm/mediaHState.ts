@@ -1,10 +1,10 @@
 import { HState } from './HSM';
 import { EventType, CommandSequenceType, EventIntrinsicAction, CommandType, ContentItemType } from '@brightsign/bscore';
 import { ArEventType, HSMStateData } from '../../type/runtime';
+import { DmState } from '@brightsign/bsdatamodel';
 import {
   DmcCommand,
   dmGetCommandSequenceIdForParentAndType,
-  DmState,
   DmCommandSequence,
   dmGetCommandSequenceStateById,
   dmGetCommandById,

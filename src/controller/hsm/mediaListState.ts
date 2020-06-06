@@ -1,11 +1,11 @@
 import { MediaHState } from './mediaHState';
 import { ZoneHSM } from './zoneHSM';
+import { DmState } from '@brightsign/bsdatamodel';
 import {
   DmMediaState,
   dmGetMediaStateById,
   DmcMediaListMediaState,
   DmMediaListContentItem,
-  DmState,
   DmMediaStateCollectionState,
   DmMediaStateSequenceMap,
   DmcMediaListItem,
